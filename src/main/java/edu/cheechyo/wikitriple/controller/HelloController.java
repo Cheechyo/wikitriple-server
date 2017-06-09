@@ -1,15 +1,23 @@
-package edu.cheechyo.wikitriple.server.controller;
+package edu.cheechyo.wikitriple.controller;
 
+import edu.cheechyo.wikitriple.model.User;
+import edu.cheechyo.wikitriple.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 /**
  * Created by Cheechyo on 2017. 6. 8..
  */
 @Controller
 public class HelloController {
+
+    @Autowired
+    UserRepository userRepository;
 
     private String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultrices at urna at tempus. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris ut mi quis diam semper aliquet eu et nisi. Curabitur nulla sapien, pellentesque ornare dolor id, elementum aliquet neque. Praesent eget tempor erat. Etiam blandit eu erat ac elementum.\n" +
             "\n" +
@@ -32,6 +40,7 @@ public class HelloController {
     }
     @GetMapping("/document/{title}")
     public String document(Model model, @PathVariable String title) {
+        List<User> list = (List<User>) userRepository.findAll();
         model.addAttribute("title", title);
         model.addAttribute("content", "Content of " + title + "\n" + loremIpsum);
         return "document";

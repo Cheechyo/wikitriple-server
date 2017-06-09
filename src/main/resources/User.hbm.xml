@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.cheechyo.wikitriple.model">
+    <class username="edu.cheechyo.wikitriple.model.User" table="U">
+        <id username="id" type="java.lang.Integer">
+            <column username="id" />
+            <generator class="native" />
+        </id>
+        <property username="username" type="java.lang.String">
+            <column username="username" />
+        </property>
+        <property username="password" type="java.lang.String">
+            <column username="password" />
+        </property>
+    </class>
+</hibernate-mapping>
+

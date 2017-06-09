@@ -1,4 +1,4 @@
-package edu.cheechyo.wikitriple.server;
+package edu.cheechyo.wikitriple;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
