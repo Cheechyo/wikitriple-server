@@ -4,11 +4,10 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory >
-    <property username="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property username="hibernate.connection.url">jdbc:mysql://203.253.207.225:3306/wikitriple</property>
-    <property username="hibernate.connection.username">wikitriple</property>
-    <property username="hibernate.connection.password">wikitriple225</property>
-    <!--<propeusernamename="hibernate.default_schema">jejunu</property>-->
-    <property username="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://203.253.207.225:3306/wikitriple</property>
+    <property name="hibernate.connection.username">wikitriple</property>
+    <property name="hibernate.connection.password">wikitriple225</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   </session-factory>
 </hibernate-configuration>

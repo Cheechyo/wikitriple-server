@@ -45,4 +45,11 @@ public class HelloController {
         model.addAttribute("content", "Content of " + title + "\n" + loremIpsum);
         return "document";
     }
+    @GetMapping("/edit/{title}")
+    public String edit(Model model, @PathVariable String title) {
+        List<User> list = (List<User>) userRepository.findAll();
+        model.addAttribute("title", title);
+        model.addAttribute("content", "Content of " + title + "\n" + loremIpsum);
+        return "edit";
+    }
 }

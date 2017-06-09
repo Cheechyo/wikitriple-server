@@ -26,8 +26,10 @@ hs_err_pid*
 ### Example user template
 
 # IntelliJ project files
+build
 .idea
 *.iml
 out
 gen
+.gradle
 build/tmp/compileJava/

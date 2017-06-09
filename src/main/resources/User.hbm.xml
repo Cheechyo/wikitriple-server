@@ -3,16 +3,16 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="edu.cheechyo.wikitriple.model">
-    <class username="edu.cheechyo.wikitriple.model.User" table="U">
-        <id username="id" type="java.lang.Integer">
-            <column username="id" />
+    <class name="edu.cheechyo.wikitriple.model.User" table="U">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
             <generator class="native" />
         </id>
-        <property username="username" type="java.lang.String">
-            <column username="username" />
+        <property name="username" type="java.lang.String">
+            <column name="username" />
         </property>
-        <property username="password" type="java.lang.String">
-            <column username="password" />
+        <property name="password" type="java.lang.String">
+            <column name="password" />
         </property>
     </class>
 </hibernate-mapping>
