@@ -23,10 +23,19 @@ public class DocumentController {
         model.addAttribute("content", document.getContent());
         return "document";
     }
+
     @GetMapping("/document/search")
-    public String search(Model model, @RequestParam String searchQuery) {
+    public String search(Model model, @RequestParam String search_query) {
+        model.addAttribute("title", search_query);
+        Document document = documentService.findTopByTitleOrderByVersionDesc(search_query);
+        if (document != null) {
+            model.addAttribute("content", document.getContent());
+        } else {
+            model.addAttribute("content", "not founded.");
+        }
         return "search";
     }
+
     @GetMapping("/document/edit/{title}")
     public String edit(Model model, @PathVariable String title) {
         Document document = documentService.findTopByTitleOrderByVersionDesc(title);
