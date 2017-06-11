@@ -17,7 +17,7 @@
         <property name="version" type="java.lang.Integer">
             <column name="version" />
         </property>
-        <property name="regUser" type="java.lang.String">
+        <property name="regUser" type="java.lang.Integer">
             <column name="reg_user"></column>
         </property>
     </class>

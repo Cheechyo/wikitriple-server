@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class Document implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String title;
     private String content;
-    private int version;
-    private int regUser;
+    private Integer version;
+    private Integer regUser;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -41,7 +41,7 @@ public class Document implements Serializable{
         this.content = content;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
@@ -49,7 +49,7 @@ public class Document implements Serializable{
         this.version = version;
     }
 
-    public int getRegUser() {
+    public Integer getRegUser() {
         return regUser;
     }
 
