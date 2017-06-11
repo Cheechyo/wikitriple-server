@@ -9,4 +9,6 @@ public interface DocumentService{
     Document findTopByTitleOrderByVersionDesc(String title);
 
     int save(Document document);
+
+    void delete(Document aDocument);
 }

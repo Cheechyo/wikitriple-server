@@ -26,4 +26,9 @@ public class DocumentServiceImpl implements DocumentService{
         documentRepository.save(document);
         return count;
     }
+
+    @Override
+    public void delete(Document aDocument) {
+        documentRepository.delete(aDocument);
+    }
 }
