@@ -17,4 +17,6 @@ public interface DocumentRepository extends CrudRepository<Document,Integer> {
     int countByTitle(String title);
 
     List<Document> findBytitleOrderByVersionDesc(String title);
+
+    Document findByTitleAndVersion(String title, Integer version);
 }

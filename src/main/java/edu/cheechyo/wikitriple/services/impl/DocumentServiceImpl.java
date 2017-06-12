@@ -37,4 +37,9 @@ public class DocumentServiceImpl implements DocumentService{
         return documentRepository.findBytitleOrderByVersionDesc(title);
     }
 
+    @Override
+    public Document findByTitleAndVersion(String title, Integer version) {
+        return documentRepository.findByTitleAndVersion(title,version);
+    }
+
 }

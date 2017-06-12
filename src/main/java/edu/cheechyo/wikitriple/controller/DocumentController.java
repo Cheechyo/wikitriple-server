@@ -24,6 +24,22 @@ public class DocumentController {
         return "document";
     }
 
+    @GetMapping("/document/{title}/{version}")
+    public String readWithVersion(Model model, @PathVariable String title, @PathVariable String version) {
+        Document document = null;
+        try {
+            Integer versionNumber = Integer.parseInt(version);
+            document = documentService.findByTitleAndVersion(title, versionNumber);
+        } catch (NumberFormatException e) {
+        }
+        if (document == null) {
+            document = documentService.findTopByTitleOrderByVersionDesc(title);
+        }
+        model.addAttribute("title", title);
+        model.addAttribute("content", document.getContent());
+        return "document";
+    }
+
     @GetMapping("/document/search")
     public String search(Model model, @RequestParam String search_query) {
         model.addAttribute("title", search_query);

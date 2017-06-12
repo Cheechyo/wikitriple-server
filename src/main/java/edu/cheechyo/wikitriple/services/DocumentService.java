@@ -15,4 +15,6 @@ public interface DocumentService{
     void delete(Document aDocument);
 
     List<Document> findBytitleOrderByVersionDesc(String title);
+
+    Document findByTitleAndVersion(String title, Integer version);
 }
