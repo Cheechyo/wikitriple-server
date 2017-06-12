@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="edu.cheechyo.wikitriple.model">
     <class name="edu.cheechyo.wikitriple.model.Document" table="DOCUMENT">
@@ -18,7 +18,7 @@
             <column name="version" />
         </property>
         <property name="regUser" type="java.lang.Integer">
-            <column name="reg_user"></column>
+            <column name="reg_user"/>
         </property>
     </class>
 </hibernate-mapping>
