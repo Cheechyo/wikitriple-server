@@ -31,4 +31,10 @@ public class DocumentServiceImpl implements DocumentService{
     public void delete(Document aDocument) {
         documentRepository.delete(aDocument);
     }
+
+    @Override
+    public java.util.List<Document> findBytitleOrderByVersionDesc(String title) {
+        return documentRepository.findBytitleOrderByVersionDesc(title);
+    }
+
 }

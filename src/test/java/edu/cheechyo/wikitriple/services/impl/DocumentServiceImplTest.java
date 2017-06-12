@@ -9,6 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -47,6 +49,23 @@ public class DocumentServiceImplTest {
         documentTwo = documentService.findTopByTitleOrderByVersionDesc(documentTwo.getTitle());
 
         assertThat(documentOne.getVersion()+1, is(documentTwo.getVersion()));
+        documentService.delete(documentOne);
+        documentService.delete(documentTwo);
+    }
+
+    @Test
+    public void findByTitleOrderByVersionDesc() throws Exception {
+        Document documentOne = new Document();
+        documentOne.setTitle("_findByTitleOrderByVersionDesctest");
+        documentOne.setContent("Content of " + documentOne.getTitle());
+        Document documentTwo = new Document();
+        documentTwo.setTitle(documentOne.getTitle());
+        documentTwo.setContent("Content of " + documentTwo.getTitle() + "2");
+
+        documentService.save(documentOne);
+        documentService.save(documentTwo);
+        List<Document> list = documentService.findBytitleOrderByVersionDesc(documentOne.getTitle());
+        assertThat(list.size(), greaterThanOrEqualTo(2));
         documentService.delete(documentOne);
         documentService.delete(documentTwo);
     }

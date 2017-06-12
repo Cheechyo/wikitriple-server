@@ -3,6 +3,8 @@ package edu.cheechyo.wikitriple.repository;
 import edu.cheechyo.wikitriple.model.Document;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 /**
  * Spring JPA : https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
  * Repository.
@@ -13,4 +15,6 @@ public interface DocumentRepository extends CrudRepository<Document,Integer> {
     Document findTopByTitleOrderByVersionDesc(String title);
 
     int countByTitle(String title);
+
+    List<Document> findBytitleOrderByVersionDesc(String title);
 }
