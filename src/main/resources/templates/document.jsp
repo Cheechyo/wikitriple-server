@@ -8,7 +8,8 @@
 		<div th:replace="fragments/inc :: header"></div>
 		<div class="content">
 			<h1 id="document_title" th:text="| @  | + ${title}" />
-			<p class="text-right"><a th:href="@{edit/} + ${title}">edit this document</a></p>
+			<hr/>
+			<div th:replace="fragments/inc :: toolkit"></div>
 			<p id="document" th:text="${content}"/>
 		</div>
 		<footer th:replace="fragments/inc :: footer"/>

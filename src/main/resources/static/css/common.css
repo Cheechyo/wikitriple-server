@@ -25,3 +25,6 @@ textarea.content{
 #document_title{
 	text-decoration: underline;
 }
+ul {
+	padding-left: 20px;
+}
