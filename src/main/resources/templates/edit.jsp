@@ -1,4 +1,4 @@
-<html>
+<html lang="kr">
 <head>
 	<title>edit : <span th:text="${title}" th:remove="tag"/></title>
 	<div th:replace="fragments/inc :: resources_head"></div>

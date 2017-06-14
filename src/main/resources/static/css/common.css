@@ -18,14 +18,10 @@ body {
 	color: #777;
 	border-top: 1px solid #e5e5e5;
 }
-
-a.edit{
-	display: inline-block;
-	text-decoration: underline;
-	float: right;
-}
-
 textarea.content{
 	width: 100%;
 	display: block;
+}
+#document_title{
+	text-decoration: underline;
 }

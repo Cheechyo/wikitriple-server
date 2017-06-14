@@ -1,4 +1,4 @@
-<html>
+<html lang="kr">
 <head>
 	<title>WikiWikiWiki : <span th:text="${title}" th:remove="tag"/></title>
 	<div th:replace="fragments/inc :: resources_head"></div>
@@ -8,7 +8,7 @@
 		<div th:replace="fragments/inc :: header"></div>
 		<div class="content">
 			<h1 th:text="${title}" />
-			<a class="edit" th:href="@{edit/} + ${title}"><span>edit this document</span></a>
+			<p class="text-right"><a th:href="@{edit/} + ${title}">edit this document</a></p>
 			<p th:text="${content}"/>
 		</div>
 		<footer th:replace="fragments/inc :: footer"/>
