@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Cheechyo on 2017. 6. 9..
  */
@@ -18,9 +20,13 @@ public class DocumentController {
 
     @GetMapping("/document/{title}")
     public String read(Model model, @PathVariable String title) {
-        Document document = documentService.findTopByTitleOrderByVersionDesc(title);
         model.addAttribute("title", title);
-        model.addAttribute("content", document.getContent());
+        Document document = documentService.findTopByTitleOrderByVersionDesc(title);
+        if (document != null) {
+            model.addAttribute("content", document.getContent());
+        } else {
+            model.addAttribute("content", "문서가 없습니다.");
+        }
         return "document";
     }
 
@@ -41,10 +47,19 @@ public class DocumentController {
         return "document";
     }
 
+    @GetMapping("/document/history/{title}")
+    public String history(Model model, @PathVariable String title) {
+        List<Document> documents = documentService.findBytitleOrderByVersionDesc(title);
+        model.addAttribute("title", title);
+        model.addAttribute("revisions", documents);
+        return "history";
+    }
+
     @GetMapping("/document/search")
     public String search(Model model, @RequestParam String search_query) {
-        model.addAttribute("title", search_query);
-        Document document = documentService.findTopByTitleOrderByVersionDesc(search_query);
+        String title = search_query;
+        model.addAttribute("title", title);
+        Document document = documentService.findTopByTitleOrderByVersionDesc(title);
         if (document != null) {
             model.addAttribute("content", document.getContent());
         } else {
