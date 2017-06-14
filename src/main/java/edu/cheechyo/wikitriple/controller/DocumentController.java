@@ -30,12 +30,13 @@ public class DocumentController {
         try {
             Integer versionNumber = Integer.parseInt(version);
             document = documentService.findByTitleAndVersion(title, versionNumber);
+            model.addAttribute("title", String.format("%s (%d)", title, versionNumber));
         } catch (NumberFormatException e) {
         }
         if (document == null) {
             document = documentService.findTopByTitleOrderByVersionDesc(title);
+            model.addAttribute("title", title);
         }
-        model.addAttribute("title", title);
         model.addAttribute("content", document.getContent());
         return "document";
     }
@@ -56,7 +57,10 @@ public class DocumentController {
     public String edit(Model model, @PathVariable String title) {
         Document document = documentService.findTopByTitleOrderByVersionDesc(title);
         model.addAttribute("title", title);
-        model.addAttribute("content", document.getContent());
+        if (document != null)
+            model.addAttribute("content", document.getContent());
+        else
+            model.addAttribute("content", "not founded.");
         return "edit";
     }
 

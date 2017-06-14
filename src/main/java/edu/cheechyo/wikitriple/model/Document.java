@@ -1,7 +1,6 @@
 package edu.cheechyo.wikitriple.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -13,7 +12,6 @@ public class Document implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull
     private String title;
     private String content;
     private Integer version;
@@ -55,7 +53,7 @@ public class Document implements Serializable{
         return regUser;
     }
 
-    public void setRegUser(int regUser) {
+    public void setRegUser(Integer regUser) {
         this.regUser = regUser;
     }
 }

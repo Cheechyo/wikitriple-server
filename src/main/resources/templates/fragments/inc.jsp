@@ -9,10 +9,11 @@
 	<div th:fragment="resources_lazy" th:remove="tag">
 		<script th:src="@{/js/node_modules/jquery/dist/jquery.slim.min.js}"></script>
 		<script th:src="@{/bootstrap-960/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/markdown-browser/markdown.min.js}"></script>
 		<script th:src="@{/js/common.js}"></script>
 	</div>
 	<div th:fragment="header" class="header clearfix">
-		<h3 class="text-muted">(Wiki)wikiwiki</h3>
+		<h3 class="text-muted"><a th:href="@{/document/index}">(Wiki)wikiwiki</a></h3>
 		<form action="#" th:action="@{/document/search}" method="GET" class="form-horizontal">
 			<div class="form-group container_12">
 				<input name="search_query" type="text" placeholder="search" class="form-control grid_12" aria-describedby="basic-search_query_addon" />
