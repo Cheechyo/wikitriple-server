@@ -1,13 +1,27 @@
 body {
 	background-color: #eeeeee;
 }
+.container{
+	border-radius: 5px;
+	background-color: #fefefe;
+}
 .header{
 	padding-bottom: 20px;
 	border-bottom: 1px solid #e5e5e5;
 	margin-bottom: 30px;
 }
+.content{
+	min-height: 1000px;
+}
 .footer{
 	padding-top: 19px;
 	color: #777;
 	border-top: 1px solid #e5e5e5;
+}
+
+a.edit{
+	display: inline-block;
+	width: 100%;
+	text-decoration: underline;
+	text-align: right;
 }

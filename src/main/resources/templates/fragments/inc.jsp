@@ -1,6 +1,7 @@
 <html>
 <body>
 	<div th:fragment="resources_head" th:remove="tag">
+		<link rel="stylesheet" th:href="@{/css/960.css}"/>
 		<link rel="stylesheet" th:href="@{/bootstrap-960/css/bootstrap.min.css}"/>
 		<link rel="stylesheet" th:href="@{/bootstrap-960/css/bootstrap-theme.css}"/>
 		<link rel="stylesheet" th:href="@{/css/common.css}"/>
@@ -13,8 +14,8 @@
 	<div th:fragment="header" class="header clearfix">
 		<h3 class="text-muted">(Wiki)wikiwiki</h3>
 		<form action="#" th:action="@{/document/search}" method="GET" class="form-horizontal">
-			<div class="form-group">
-				<input name="search_query" type="text" placeholder="search" class="form-control" aria-describedby="basic-search_query_addon" />
+			<div class="form-group container_12">
+				<input name="search_query" type="text" placeholder="search" class="form-control grid_12" aria-describedby="basic-search_query_addon" />
 				<!-- <button type="submit" class="btn btn-default">Go</button> -->
 			</div>
 		</form>
