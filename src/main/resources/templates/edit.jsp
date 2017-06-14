@@ -2,6 +2,11 @@
 <head>
 	<title>edit : <span th:text="${title}" th:remove="tag"/></title>
 	<div th:replace="fragments/inc :: resources_head"></div>
+	<style>
+.document_edit{
+	max-width: 940px;
+}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -10,8 +15,8 @@
 		<form action="#" th:action="@{/document/save}" method="POST">
 			<input name="title" type="hidden" th:value="${title}"/>
 			<div class="container_12">
-				<textarea class="document_edit grid_6 well" name="content" cols="100" rows="30" oninput="this.editor.update()" th:text="${content}"/>
-				<div id="document_preview" class="grid_6"></div>
+				<textarea class="document_edit grid_6 alpha well" name="content" cols="100" rows="30" oninput="this.editor.update()" th:text="${content}"/>
+				<div id="document_preview" class="grid_6 omega"></div>
 			</div>
 			<button name="submit" id="submit" type="submit" value="submit">OK!</button>
 		</form>
