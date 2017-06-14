@@ -5,10 +5,10 @@
 		<link rel="stylesheet" th:href="@{/bootstrap-960/css/bootstrap.min.css}"/>
 		<link rel="stylesheet" th:href="@{/bootstrap-960/css/bootstrap-theme.css}"/>
 		<link rel="stylesheet" th:href="@{/css/common.css}"/>
-	</div>
-	<div th:fragment="resources_lazy" th:remove="tag">
 		<script th:src="@{/js/node_modules/jquery/dist/jquery.slim.min.js}"></script>
 		<script th:src="@{/bootstrap-960/js/bootstrap.min.js}"></script>
+	</div>
+	<div th:fragment="resources_lazy" th:remove="tag">
 		<script th:src="@{/js/markdown-browser/markdown.min.js}"></script>
 		<script th:src="@{/js/common.js}"></script>
 	</div>

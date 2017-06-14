@@ -48,7 +48,7 @@ public class DocumentController {
         if (document != null) {
             model.addAttribute("content", document.getContent());
         } else {
-            model.addAttribute("content", "not founded.");
+            model.addAttribute("content", "문서가 없습니다.");
         }
         return "search";
     }
@@ -60,7 +60,7 @@ public class DocumentController {
         if (document != null)
             model.addAttribute("content", document.getContent());
         else
-            model.addAttribute("content", "not founded.");
+            model.addAttribute("content", "문서가 없습니다.");
         return "edit";
     }
 
