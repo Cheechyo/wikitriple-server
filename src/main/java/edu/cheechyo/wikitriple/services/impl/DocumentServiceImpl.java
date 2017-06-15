@@ -6,6 +6,8 @@ import edu.cheechyo.wikitriple.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+
 /**
  * Created by Cheechyo on 2017. 6. 9..
  */
@@ -23,6 +25,9 @@ public class DocumentServiceImpl implements DocumentService{
     public int save(Document document) {
         int count = documentRepository.countByTitle(document.getTitle());
         document.setVersion(count);
+        if (document.getRegDate() == null){
+            document.setRegDate(new Date(System.currentTimeMillis()));
+        }
         documentRepository.save(document);
         return count;
     }

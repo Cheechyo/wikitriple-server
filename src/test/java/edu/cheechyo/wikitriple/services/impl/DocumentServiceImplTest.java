@@ -51,8 +51,8 @@ public class DocumentServiceImplTest {
 
         Date d = new Date(System.currentTimeMillis());
         assertThat(documentOne.getVersion()+1, is(documentTwo.getVersion()));
-        assertThat(Math.abs(documentOne.getRegDate().compareTo(d)), lessThan(1000));
-        assertThat(Math.abs(documentTwo.getRegDate().compareTo(d)), lessThan(1000));
+        assertThat(Math.abs(documentOne.getRegDate().compareTo(d)), lessThan(3000));
+        assertThat(Math.abs(documentTwo.getRegDate().compareTo(d)), lessThan(3000));
         documentService.delete(documentOne);
         documentService.delete(documentTwo);
     }

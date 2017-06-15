@@ -13,6 +13,12 @@
 		<script th:src="@{/js/common.js}"></script>
 	</div>
 	<div th:fragment="header" class="header clearfix">
+		<nav>
+			<ul class="nav nav-pills pull-right">
+				<li role="presentation" class="active"><a th:href="@{/document/index}">Home</a></li>
+				<li role="presentation"><a href="#login" onclick="$('#login_modal').modal('show');">login</a></li>
+			</ul>
+		</nav>
 		<h3 class="text-muted"><a th:href="@{/document/index}">(Wiki)wikiwiki</a></h3>
 		<form action="#" th:action="@{/document/search}" method="GET" class="form-horizontal">
 			<div class="form-group container_12">
@@ -31,5 +37,28 @@
 		</ul>
 	</div>
 	<footer th:fragment="footer" class="footer"><p>&copy; 2017 Cheechyo, kwj9211 -at- gmail -dot- com</p></footer>
+	<form th:fragment="login_modal" id="login_modal" class="modal fade" tabindex="-1" role="dialog" th:action="@{/login}" method="POST">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4>Login</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input type="text" class="form-control" name="username" placeholder="username"/>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" name="password" placeholder="password"/>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">OK</button>
+				</div>
+			</div>
+		</div>
+	</form>
 </body>
 </html>

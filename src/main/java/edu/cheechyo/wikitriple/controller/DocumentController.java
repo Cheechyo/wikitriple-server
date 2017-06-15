@@ -1,6 +1,7 @@
 package edu.cheechyo.wikitriple.controller;
 
 import edu.cheechyo.wikitriple.model.Document;
+import edu.cheechyo.wikitriple.model.User;
 import edu.cheechyo.wikitriple.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class DocumentController {
     DocumentService documentService;
 
     @GetMapping("/document/{title}")
-    public String read(Model model, @PathVariable String title) {
+    public String read(Model model, @PathVariable String title, @SessionAttribute(required = false) User loginedUser) {
         model.addAttribute("title", title);
         Document document = documentService.findTopByTitleOrderByVersionDesc(title);
         if (document != null) {

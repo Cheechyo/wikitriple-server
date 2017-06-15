@@ -1,13 +1,14 @@
 package edu.cheechyo.wikitriple.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Cheechyo on 2017. 6. 8..
  */
 @Entity
 @Table(name = "userinfo")
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
