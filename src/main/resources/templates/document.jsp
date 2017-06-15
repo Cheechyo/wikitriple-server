@@ -14,8 +14,7 @@
 		</div>
 		<footer th:replace="fragments/inc :: footer"/>
 	</div>
-	<div th:replace="fragments/inc :: resources_lazy"></div>
-	<form th:replace="fragments/inc :: login_modal"></form>
+	<div th:replace="fragments/inc :: resources_lazy"></div>	
 	<script>
 $(document).ready(function(){
 	$('#document').html(markdown.toHTML($('#document').text()));

@@ -20,7 +20,9 @@ public class DocumentController {
     DocumentService documentService;
 
     @GetMapping("/document/{title}")
-    public String read(Model model, @PathVariable String title, @SessionAttribute(required = false) User loginedUser) {
+    public String read(Model model
+            , @PathVariable String title
+            , @SessionAttribute(required = false) User loginedUser) {
         model.addAttribute("title", title);
         Document document = documentService.findTopByTitleOrderByVersionDesc(title);
         if (document != null) {
@@ -82,7 +84,9 @@ public class DocumentController {
     }
 
     @PostMapping(value = "/document/save")
-    public String save(Model model, @ModelAttribute Document document) {
+    public String save(Model model
+            , @ModelAttribute Document document
+            , @SessionAttribute User loginedUser) {
         documentService.save(document);
         return "redirect:/document/" + document.getTitle();
     }

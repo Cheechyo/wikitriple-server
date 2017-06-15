@@ -10,7 +10,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Cheechyo on 2017. 6. 15..
@@ -39,6 +41,23 @@ public class UserServiceImplTest {
             userService.delete(savedUser);
             throw new Exception();
         }
+    }
+
+    @Test
+    public void saveWithSamename() throws Exception{
+        final String username = "_TESTUSER";
+        final String password = "password";
+        final String password2 = "password2";
+        final User aUser = new User();
+        aUser.setUsername(username);
+        aUser.setPassword(password);
+        assertTrue(userService.save(aUser));
+        aUser.setPassword(password2);
+        assertFalse(userService.save(aUser));
+        User savedUser = userService.findByUsernameAndPassword(username, password);
+        assertThat(aUser.getUsername(), is(savedUser.getUsername()));
+        assertThat(password, is(savedUser.getPassword()));
+        userService.delete(savedUser);
     }
 
 }

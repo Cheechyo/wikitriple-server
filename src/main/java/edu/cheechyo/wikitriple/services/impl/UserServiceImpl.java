@@ -6,6 +6,7 @@ import edu.cheechyo.wikitriple.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 /**
  * Created by Cheechyo on 2017. 6. 15..
  */
@@ -21,8 +22,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean save(User aUser) {
-        final User savedUser = userRepository.findByUsernameAndPassword(aUser.getUsername(), aUser.getPassword());
-        if (savedUser == null) {
+        final List<User> savedUser = userRepository.findByUsername(aUser.getUsername());
+        if (savedUser == null || savedUser.size() == 0) {
             userRepository.save(aUser);
             return true;
         } else {
