@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,5 +29,12 @@ public class UserController {
         aUser.setPassword(password);
         User savedUser = userService.findByUsernameAndPassword(username,password);
         httpSession.setAttribute("loginedUser", savedUser);
+    }
+    @GetMapping("/logout")
+    void logout(HttpSession httpSession, @RequestParam(required = false)String loopBack) {
+        final User loginedUser = (User) httpSession.getAttribute("loginedUser");
+        if (loginedUser != null && loginedUser.getId() != null){
+            httpSession.setAttribute("loginedUser", null);
+        }
     }
 }

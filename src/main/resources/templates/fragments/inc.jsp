@@ -14,9 +14,12 @@
 	</div>
 	<div th:fragment="header" class="header clearfix">
 		<nav>
-			<ul class="nav nav-pills pull-right">
-				<li role="presentation" class="active"><a th:href="@{/document/index}">Home</a></li>
-				<li role="presentation"><a href="#login" onclick="$('#login_modal').modal('show');">login</a></li>
+			<ul class="nav nav-pills pull-right" style="margin: 10px;">
+				<!-- <li role="presentation" class="active"><a th:href="@{/document/index}">Home</a></li> -->
+				<li role="presentation">
+					<a th:if="${user}" th:text="|사용자 : | + ${user.username} + |.|" id="user_tag" class="text-center">username</a>
+					<a th:unless="${user}" href="#login" onclick="$('#login_modal').modal('show');">login</a>
+				</li>
 			</ul>
 		</nav>
 		<h3 class="text-muted"><a th:href="@{/document/index}">(Wiki)wikiwiki</a></h3>
@@ -26,8 +29,22 @@
 				<!-- <button type="submit" class="btn btn-default">Go</button> -->
 			</div>
 		</form>
-		<script>
+		<script th:inline="javascript">
 			$(document).ready(function(){$("input[name=search_query]").focus();});
+			$("#user_tag").on("mouseenter", function(e){
+				e.target._origintext = $(e.target).text();
+				e.target._originwidth = $(e.target).width();
+				$(e.target).html("logout");
+				$(e.target).width(e.target._originwidth);
+				$(e.target).on("click", function(){
+					/*[+
+					window.location.replace([[@{/logout}]]);
+					+]*/
+				});
+			}).on("mouseout", function(e){
+				$(e.target).off("click");
+				$(e.target).text(e.target._origintext);
+			});
 		</script>
 	</div>
 	<div th:fragment="toolkit" class="toolkit pull-right well well-sm">

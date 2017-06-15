@@ -28,6 +28,7 @@ public class DocumentController {
         } else {
             model.addAttribute("content", "문서가 없습니다.");
         }
+        model.addAttribute("user", loginedUser);
         return "document";
     }
 
