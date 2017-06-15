@@ -9,16 +9,11 @@
 		<div class="content">
 			<h1 id="document_title" th:text="| @  | + ${title}" />
 			<hr/>
-			<table>
-				<tr>
-					<th>NAME</th>
-					<th>VERSION</th>
-				</tr>
-				<tr th:each="document : ${revisions}">
-					<td th:text="${document.title}">Title</td>
-					<td th:text="${document.version}">4</td>
-				</tr>
-			</table>
+			<ul th:each="document : ${revisions}">
+				<li>
+					<a th:text="${document.title} + | | + ${document.regDate} + | | + |(| + ${document.version} + |)|" th:href="@{/document/} + ${document.title} + |/| + ${document.version}"></a>
+				</li>
+			</ul>
 		</div>
 		<footer th:replace="fragments/inc :: footer"/>
 	</div>

@@ -2,6 +2,7 @@ package edu.cheechyo.wikitriple.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * Created by Cheechyo on 2017. 6. 9..
@@ -16,6 +17,16 @@ public class Document implements Serializable{
     private String content;
     private Integer version;
     private Integer regUser;
+
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+
+    private Date regDate;
 
     public Integer getId() {
         return id;

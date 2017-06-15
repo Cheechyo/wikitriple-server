@@ -20,6 +20,9 @@
         <property name="regUser" type="java.lang.Integer">
             <column name="reg_user"/>
         </property>
+        <property name="regDate" type="java.sql.Date">
+            <column name="reg_date"/>
+        </property>
     </class>
 </hibernate-mapping>
 

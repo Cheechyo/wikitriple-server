@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -48,7 +49,10 @@ public class DocumentServiceImplTest {
         documentService.save(documentTwo);
         documentTwo = documentService.findTopByTitleOrderByVersionDesc(documentTwo.getTitle());
 
+        Date d = new Date(System.currentTimeMillis());
         assertThat(documentOne.getVersion()+1, is(documentTwo.getVersion()));
+        assertThat(Math.abs(documentOne.getRegDate().compareTo(d)), lessThan(1000));
+        assertThat(Math.abs(documentTwo.getRegDate().compareTo(d)), lessThan(1000));
         documentService.delete(documentOne);
         documentService.delete(documentTwo);
     }
