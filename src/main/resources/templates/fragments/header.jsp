@@ -65,6 +65,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
+					<span>로그인하면 메인 페이지(index)로 돌아갑니다.</span>
 					<button type="submit" class="btn btn-primary">OK</button>
 				</div>
 			</div>
