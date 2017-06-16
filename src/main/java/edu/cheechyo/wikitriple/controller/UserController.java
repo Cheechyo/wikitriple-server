@@ -1,6 +1,7 @@
 package edu.cheechyo.wikitriple.controller;
 
 import edu.cheechyo.wikitriple.model.User;
+import edu.cheechyo.wikitriple.services.DocumentService;
 import edu.cheechyo.wikitriple.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    DocumentService documentService;
     @PostMapping("/login")
     void login(HttpSession httpSession, @RequestParam String username, @RequestParam String password, @RequestParam(required = false)String loopBack) {
         final User aUser = new User();
         aUser.setUsername(username);
         aUser.setPassword(password);
         User savedUser = userService.findByUsernameAndPassword(username,password);
+        if (savedUser != null && savedUser.getUserinfoId() != null) {
+            httpSession.setAttribute("documentsByUser", documentService.findByUser(savedUser));
+        }
         httpSession.setAttribute("loginedUser", savedUser);
     }
 

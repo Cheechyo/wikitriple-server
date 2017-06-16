@@ -109,6 +109,15 @@
 						<label for="password">Password</label>
 						<input type="password" class="form-control" name="password" placeholder="password" th:value="${user.password}" readonly="true" />
 					</div>
+					<ul th:each="document : ${documentsByUser}" th:if="${documentsByUser}">
+						<li>
+							<a th:text="${document.title} + | | + ${document.regDate} + | | + |(| + ${document.version} + |)|" th:href="@{/document/} + ${document.title} + |/| + ${document.version}"></a>
+							<span th:if="${document.regUser}" th:text="|by | + ${document.regUser.username}"></span>
+						</li>
+					</ul>
+					<ul th:unless="${documentsByUser}">
+						<li>아직 기여한 문서가 없습니다.</li>
+					</ul>
 				</div>
 				<!-- <div class="modal-footer">
 					<button type="submit" class="btn btn-primary">OK</button>

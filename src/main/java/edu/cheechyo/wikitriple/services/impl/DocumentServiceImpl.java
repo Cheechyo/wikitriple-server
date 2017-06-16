@@ -9,12 +9,13 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by Cheechyo on 2017. 6. 9..
  */
 @Component
-public class DocumentServiceImpl implements DocumentService{
+public class DocumentServiceImpl implements DocumentService {
     @Autowired
     DocumentRepository documentRepository;
 
@@ -27,7 +28,7 @@ public class DocumentServiceImpl implements DocumentService{
     public int save(Document document) {
         int count = documentRepository.countByTitle(document.getTitle());
         document.setVersion(count);
-        if (document.getRegDate() == null){
+        if (document.getRegDate() == null) {
             document.setRegDate(new Date(System.currentTimeMillis()));
         }
         documentRepository.save(document);
@@ -47,13 +48,18 @@ public class DocumentServiceImpl implements DocumentService{
 
     @Override
     public Document findByTitleAndVersion(String title, Integer version) {
-        return documentRepository.findByTitleAndVersion(title,version);
+        return documentRepository.findByTitleAndVersion(title, version);
     }
 
     @Override
     public void saveWithUser(Document document, User loginedUser) {
         document.setRegUser(loginedUser);
         this.save(document);
+    }
+
+    @Override
+    public List<Document> findByUser(User savedUser) {
+        return documentRepository.findAllByRegUser(savedUser);
     }
 
 }

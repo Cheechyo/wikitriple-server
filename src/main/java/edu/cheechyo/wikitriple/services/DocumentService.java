@@ -20,4 +20,6 @@ public interface DocumentService{
     Document findByTitleAndVersion(String title, Integer version);
 
     void saveWithUser(Document document, User loginedUser);
+
+    List<Document> findByUser(User savedUser);
 }

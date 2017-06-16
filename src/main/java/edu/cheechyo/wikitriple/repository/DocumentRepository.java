@@ -1,6 +1,7 @@
 package edu.cheechyo.wikitriple.repository;
 
 import edu.cheechyo.wikitriple.model.Document;
+import edu.cheechyo.wikitriple.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface DocumentRepository extends CrudRepository<Document,Integer> {
     Document findByTitleAndVersion(String title, Integer version);
 
     void delete(Document document);
+
+    List<Document> findAllByRegUser(User regUser);
 }
