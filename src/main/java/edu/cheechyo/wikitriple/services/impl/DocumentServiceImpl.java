@@ -1,11 +1,13 @@
 package edu.cheechyo.wikitriple.services.impl;
 
 import edu.cheechyo.wikitriple.model.Document;
+import edu.cheechyo.wikitriple.model.User;
 import edu.cheechyo.wikitriple.repository.DocumentRepository;
 import edu.cheechyo.wikitriple.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.sql.Date;
 
 /**
@@ -32,6 +34,7 @@ public class DocumentServiceImpl implements DocumentService{
         return count;
     }
 
+    @Transactional
     @Override
     public void delete(Document aDocument) {
         documentRepository.delete(aDocument);
@@ -45,6 +48,12 @@ public class DocumentServiceImpl implements DocumentService{
     @Override
     public Document findByTitleAndVersion(String title, Integer version) {
         return documentRepository.findByTitleAndVersion(title,version);
+    }
+
+    @Override
+    public void saveWithUser(Document document, User loginedUser) {
+        document.setRegUser(loginedUser);
+        this.save(document);
     }
 
 }

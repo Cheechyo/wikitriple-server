@@ -17,12 +17,10 @@
         <property name="version" type="java.lang.Integer">
             <column name="version" />
         </property>
-        <property name="regUser" type="java.lang.Integer">
-            <column name="reg_user"/>
-        </property>
         <property name="regDate" type="java.sql.Date">
             <column name="reg_date"/>
         </property>
+        <many-to-one name="regUser" column="reg_user"/>
     </class>
 </hibernate-mapping>
 

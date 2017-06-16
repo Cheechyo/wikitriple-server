@@ -19,4 +19,6 @@ public interface DocumentRepository extends CrudRepository<Document,Integer> {
     List<Document> findBytitleOrderByVersionDesc(String title);
 
     Document findByTitleAndVersion(String title, Integer version);
+
+    void delete(Document document);
 }

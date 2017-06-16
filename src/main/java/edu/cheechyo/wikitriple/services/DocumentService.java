@@ -1,6 +1,7 @@
 package edu.cheechyo.wikitriple.services;
 
 import edu.cheechyo.wikitriple.model.Document;
+import edu.cheechyo.wikitriple.model.User;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface DocumentService{
     List<Document> findBytitleOrderByVersionDesc(String title);
 
     Document findByTitleAndVersion(String title, Integer version);
+
+    void saveWithUser(Document document, User loginedUser);
 }

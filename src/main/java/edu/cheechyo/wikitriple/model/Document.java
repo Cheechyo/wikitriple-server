@@ -9,14 +9,25 @@ import java.sql.Date;
  */
 @Entity
 @Table(name = "document")
-public class Document implements Serializable{
+public class Document implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
     private String content;
     private Integer version;
-    private Integer regUser;
+    @JoinColumn(name = "reg_user")
+    @ManyToOne
+    private User regUser;
+    private Date regDate;
+
+    public User getRegUser() {
+        return regUser;
+    }
+
+    public void setRegUser(User regUser) {
+        this.regUser = regUser;
+    }
 
     public Date getRegDate() {
         return regDate;
@@ -25,8 +36,6 @@ public class Document implements Serializable{
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
     }
-
-    private Date regDate;
 
     public Integer getId() {
         return id;
@@ -60,11 +69,4 @@ public class Document implements Serializable{
         this.version = version;
     }
 
-    public Integer getRegUser() {
-        return regUser;
-    }
-
-    public void setRegUser(Integer regUser) {
-        this.regUser = regUser;
-    }
 }

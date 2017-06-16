@@ -87,7 +87,11 @@ public class DocumentController {
     public String save(Model model
             , @ModelAttribute Document document
             , @SessionAttribute User loginedUser) {
-        documentService.save(document);
+        if (loginedUser == null) {
+            documentService.save(document);
+        } else {
+            documentService.saveWithUser(document, loginedUser);
+        }
         return "redirect:/document/" + document.getTitle();
     }
 

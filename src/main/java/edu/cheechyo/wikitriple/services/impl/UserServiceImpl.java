@@ -6,6 +6,7 @@ import edu.cheechyo.wikitriple.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 /**
  * Created by Cheechyo on 2017. 6. 15..
@@ -32,11 +33,13 @@ public class UserServiceImpl implements UserService{
 
     }
 
+    @Transactional
     @Override
     public void delete(User aUser) {
         userRepository.delete(aUser);
     }
 
+    @Transactional
     @Override
     public void deleteByUsernameAndPassword(String username, String password) {
         userRepository.deleteByUsernameAndPassword(username, password);

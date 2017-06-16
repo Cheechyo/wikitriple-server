@@ -51,6 +51,7 @@ public class UserServiceImplTest {
         final User aUser = new User();
         aUser.setUsername(username);
         aUser.setPassword(password);
+        userService.deleteByUsernameAndPassword(username, password);
         assertTrue(userService.save(aUser));
         aUser.setPassword(password2);
         assertFalse(userService.save(aUser));
