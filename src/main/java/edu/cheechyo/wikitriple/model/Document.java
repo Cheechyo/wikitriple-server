@@ -2,7 +2,7 @@ package edu.cheechyo.wikitriple.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Cheechyo on 2017. 6. 9..
@@ -19,7 +19,7 @@ public class Document implements Serializable {
     @JoinColumn(name = "reg_user")
     @ManyToOne
     private User regUser;
-    private Date regDate;
+    private Timestamp regDate;
 
     public Integer getDocumentId() {
         return documentId;
@@ -37,11 +37,15 @@ public class Document implements Serializable {
         this.regUser = regUser;
     }
 
-    public Date getRegDate() {
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public Timestamp getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(Timestamp regDate) {
         this.regDate = regDate;
     }
 

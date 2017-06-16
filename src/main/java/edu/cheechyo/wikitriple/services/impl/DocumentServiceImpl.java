@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -29,7 +29,7 @@ public class DocumentServiceImpl implements DocumentService {
         int count = documentRepository.countByTitle(document.getTitle());
         document.setVersion(count);
         if (document.getRegDate() == null) {
-            document.setRegDate(new Date(System.currentTimeMillis()));
+            document.setRegDate(new Timestamp(System.currentTimeMillis()));
         }
         documentRepository.save(document);
         return count;
@@ -60,6 +60,11 @@ public class DocumentServiceImpl implements DocumentService {
     @Override
     public List<Document> findByUser(User savedUser) {
         return documentRepository.findAllByRegUser(savedUser);
+    }
+
+    @Override
+    public List<Document> findTop10ByOrderByRegDateDesc() {
+        return documentRepository.findTop10ByOrderByRegDateDesc();
     }
 
 }

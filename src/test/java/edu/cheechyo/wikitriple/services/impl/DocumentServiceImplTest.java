@@ -111,6 +111,7 @@ public class DocumentServiceImplTest {
 
     @Test
     public void findDocumentByUser(){
+        // TODO 테스트 작성해야됨
         final String title = "_findDocumentByUser test";
         Document documentOne = new Document();
         documentOne.setTitle(title);
@@ -131,5 +132,9 @@ public class DocumentServiceImplTest {
 
         documentService.delete(documentOne);
         documentService.delete(documentTwo);
+    }
+    @Test
+    public void find10ByRegDateDesc(){
+        // TODO 테스트 작성해야됨
     }
 }

@@ -17,7 +17,7 @@
         <property name="version" type="java.lang.Integer">
             <column name="version" />
         </property>
-        <property name="regDate" type="java.sql.Date">
+        <property name="regDate" type="java.sql.Timestamp">
             <column name="reg_date"/>
         </property>
         <many-to-one name="regUser" column="reg_user"/>

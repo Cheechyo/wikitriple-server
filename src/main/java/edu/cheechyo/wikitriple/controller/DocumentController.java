@@ -35,6 +35,7 @@ public class DocumentController {
         }
         model.addAttribute("user", loginedUser);
         model.addAttribute("documentsByUser", documentsByUser);
+        model.addAttribute("recentDocuments", documentService.findTop10ByOrderByRegDateDesc());
         return "document";
     }
 
