@@ -23,7 +23,7 @@ public interface DocumentRepository extends CrudRepository<Document,Integer> {
 
     void delete(Document document);
 
-    List<Document> findAllByRegUser(User regUser);
+    List<Document> findAllByRegUserOrderByRegDateDesc(User regUser);
 
     List<Document> findTop10ByOrderByRegDateDesc();
 }

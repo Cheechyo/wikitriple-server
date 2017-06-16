@@ -21,7 +21,7 @@ public interface DocumentService{
 
     void saveWithUser(Document document, User loginedUser);
 
-    List<Document> findByUser(User savedUser);
+    List<Document> findByUserOrderByRegDateDesc(User savedUser);
 
     List<Document> findTop10ByOrderByRegDateDesc();
 }

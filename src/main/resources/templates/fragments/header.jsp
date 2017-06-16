@@ -113,7 +113,7 @@
 					<ul th:each="document : ${documentsByUser}" th:if="${documentsByUser}">
 						<li>
 							<a th:text="${document.title} + | | + ${document.regDate} + | | + |(| + ${document.version} + |)|" th:href="@{/document/} + ${document.title} + |/| + ${document.version}"></a>
-							<span th:if="${document.regUser}" th:text="|by | + ${document.regUser.username}"></span>
+							<span th:text="|by | + ${user.username}"></span>
 						</li>
 					</ul>
 					<ul th:unless="${documentsByUser}">

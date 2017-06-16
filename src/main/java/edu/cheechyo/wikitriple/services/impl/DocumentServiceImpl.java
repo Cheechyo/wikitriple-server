@@ -58,8 +58,8 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public List<Document> findByUser(User savedUser) {
-        return documentRepository.findAllByRegUser(savedUser);
+    public List<Document> findByUserOrderByRegDateDesc(User savedUser) {
+        return documentRepository.findAllByRegUserOrderByRegDateDesc(savedUser);
     }
 
     @Override

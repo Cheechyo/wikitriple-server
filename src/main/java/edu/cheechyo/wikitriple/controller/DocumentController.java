@@ -117,8 +117,9 @@ public class DocumentController {
         } else {
             documentService.saveWithUser(document, loginedUser);
         }
-        if (loginedUser != null && loginedUser.getUserinfoId() != null)
-            httpSession.setAttribute("documentsByUser", documentService.findByUser(loginedUser));
+        if (loginedUser != null && loginedUser.getUserinfoId() != null) {
+            httpSession.setAttribute("documentsByUser", documentService.findByUserOrderByRegDateDesc(loginedUser));
+        }
         return "redirect:/document/" + URLEncoder.encode(document.getTitle(), "UTF-8");
     }
 

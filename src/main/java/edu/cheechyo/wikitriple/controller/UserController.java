@@ -32,7 +32,7 @@ public class UserController {
         aUser.setPassword(password);
         User savedUser = userService.findByUsernameAndPassword(username,password);
         if (savedUser != null && savedUser.getUserinfoId() != null) {
-            httpSession.setAttribute("documentsByUser", documentService.findByUser(savedUser));
+            httpSession.setAttribute("documentsByUser", documentService.findByUserOrderByRegDateDesc(savedUser));
         }
         httpSession.setAttribute("loginedUser", savedUser);
     }
