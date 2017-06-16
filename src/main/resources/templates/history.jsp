@@ -7,11 +7,12 @@
 	<div class="container">
 		<div th:replace="fragments/inc :: header"></div>
 		<div class="content">
-			<h1 id="document_title" th:text="| @  | + ${title}" />
+			<h1 id="document_title" th:text="| @  |r + ${title}" />
 			<hr/>
 			<ul th:each="document : ${revisions}">
 				<li>
 					<a th:text="${document.title} + | | + ${document.regDate} + | | + |(| + ${document.version} + |)|" th:href="@{/document/} + ${document.title} + |/| + ${document.version}"></a>
+					<span th:if="${document.regUser}" th:text="|by | + ${document.regUser.username}"></span>
 				</li>
 			</ul>
 		</div>

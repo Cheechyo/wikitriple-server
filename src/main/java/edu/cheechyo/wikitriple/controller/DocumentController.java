@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 /**
@@ -86,13 +88,13 @@ public class DocumentController {
     @PostMapping(value = "/document/save")
     public String save(Model model
             , @ModelAttribute Document document
-            , @SessionAttribute User loginedUser) {
+            , @SessionAttribute(required = false) User loginedUser) throws UnsupportedEncodingException {
         if (loginedUser == null) {
             documentService.save(document);
         } else {
             documentService.saveWithUser(document, loginedUser);
         }
-        return "redirect:/document/" + document.getTitle();
+        return "redirect:/document/" + URLEncoder.encode(document.getTitle(), "UTF-8");
     }
 
 }
