@@ -42,15 +42,15 @@ public class DocumentController {
         try {
             Integer versionNumber = Integer.parseInt(version);
             document = documentService.findByTitleAndVersion(title, versionNumber);
-            model.addAttribute("title", String.format("%s (%d)", title, versionNumber));
         } catch (NumberFormatException e) {
         }
         if (document == null) {
             document = documentService.findTopByTitleOrderByVersionDesc(title);
-            model.addAttribute("title", title);
         }
+        model.addAttribute("title", title);
+        model.addAttribute("version", document.getVersion());
         model.addAttribute("content", document.getContent());
-        return "document";
+        return "document_withversion";
     }
 
     @GetMapping("/document/history/{title}")
@@ -81,7 +81,7 @@ public class DocumentController {
         if (document != null)
             model.addAttribute("content", document.getContent());
         else
-            model.addAttribute("content", "문서가 없습니다.");
+            model.addAttribute("content", "마크다운 문법을 사용해서 내용을 채워주세요. \n\n 우측은 미리보기입니다.");
         return "edit";
     }
 
@@ -97,4 +97,8 @@ public class DocumentController {
         return "redirect:/document/" + URLEncoder.encode(document.getTitle(), "UTF-8");
     }
 
+//    @ExceptionHandler(NullPointerException.class)
+//    public String handleException(NullPointerException e) {
+//        return "error";
+//    }
 }

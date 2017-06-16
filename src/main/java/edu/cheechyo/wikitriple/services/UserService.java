@@ -12,5 +12,5 @@ public interface UserService {
 
     void delete(User aUser);
 
-    void deleteByUsernameAndPassword(String username, String password);
+    void deleteAllByUsernameAndPassword(String username, String password);
 }

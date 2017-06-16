@@ -24,8 +24,8 @@
 	</div>
 	<div th:fragment="toolkit" class="toolkit pull-right well well-sm">
 		<ul>
-			<li><a th:href="@{edit/} + ${title}">Edit this document</a></li>
-			<li><a th:href="@{history/} + ${title}">History</a></li>
+			<li><a th:href="@{/document/edit/} + ${title}">Edit this document</a></li>
+			<li><a th:href="@{/document/history/} + ${title}">History</a></li>
 		</ul>
 	</div>
 	<footer th:fragment="footer" class="footer"><p>&copy; 2017 Cheechyo, kwj9211 -at- gmail -dot- com</p></footer>

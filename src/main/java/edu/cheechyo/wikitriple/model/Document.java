@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Document implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer documentId;
     private String title;
     private String content;
     private Integer version;
@@ -20,6 +20,14 @@ public class Document implements Serializable {
     @ManyToOne
     private User regUser;
     private Date regDate;
+
+    public Integer getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(Integer documentId) {
+        this.documentId = documentId;
+    }
 
     public User getRegUser() {
         return regUser;
@@ -35,14 +43,6 @@ public class Document implements Serializable {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {

@@ -108,4 +108,28 @@ public class DocumentServiceImplTest {
         }
 
     }
+
+    @Test
+    public void findDocumentByUser(){
+        final String title = "_findDocumentByUser test";
+        Document documentOne = new Document();
+        documentOne.setTitle(title);
+        documentOne.setContent("Content of " + title);
+        Document documentTwo = new Document();
+        documentTwo.setTitle(title);
+        documentTwo.setContent("Content of " + title + "2");
+
+        documentService.save(documentOne);
+        documentOne = documentService.findTopByTitleOrderByVersionDesc(documentOne.getTitle());
+        documentService.save(documentTwo);
+        documentTwo = documentService.findTopByTitleOrderByVersionDesc(documentTwo.getTitle());
+
+        Date d = new Date(System.currentTimeMillis());
+        assertThat(documentOne.getVersion()+1, is(documentTwo.getVersion()));
+        assertThat(Math.abs(documentOne.getRegDate().compareTo(d)), lessThan(3000));
+        assertThat(Math.abs(documentTwo.getRegDate().compareTo(d)), lessThan(3000));
+
+        documentService.delete(documentOne);
+        documentService.delete(documentTwo);
+    }
 }

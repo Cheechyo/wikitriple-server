@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService{
 
     @Transactional
     @Override
-    public void deleteByUsernameAndPassword(String username, String password) {
-        userRepository.deleteByUsernameAndPassword(username, password);
+    public void deleteAllByUsernameAndPassword(String username, String password) {
+        userRepository.deleteAllByUsernameAndPassword(username, password);
     }
 }

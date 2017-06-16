@@ -46,7 +46,7 @@ public class UserController {
     @GetMapping("/logout")
     void logout(HttpSession httpSession, @RequestParam(required = false)String loopBack) {
         final User loginedUser = (User) httpSession.getAttribute("loginedUser");
-        if (loginedUser != null && loginedUser.getId() != null){
+        if (loginedUser != null && loginedUser.getUserinfoId() != null){
             httpSession.setAttribute("loginedUser", null);
         }
     }

@@ -11,16 +11,16 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer userinfoId;
     private String username;
     private String password;
 
-    public Integer getId() {
-        return id;
+    public Integer getUserinfoId() {
+        return userinfoId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserinfoId(Integer userinfoId) {
+        this.userinfoId = userinfoId;
     }
 
     public String getUsername() {
