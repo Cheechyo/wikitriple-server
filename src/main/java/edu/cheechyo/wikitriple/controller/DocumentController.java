@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -107,7 +108,8 @@ public class DocumentController {
     }
 
     @PostMapping(value = "/document/save")
-    public String save(Model model
+    public String save(HttpSession httpSession,
+                       Model model
             , @ModelAttribute Document document
             , @SessionAttribute(required = false) User loginedUser) throws UnsupportedEncodingException {
         if (loginedUser == null) {
@@ -115,6 +117,8 @@ public class DocumentController {
         } else {
             documentService.saveWithUser(document, loginedUser);
         }
+        if (loginedUser != null && loginedUser.getUserinfoId() != null)
+            httpSession.setAttribute("documentsByUser", documentService.findByUser(loginedUser));
         return "redirect:/document/" + URLEncoder.encode(document.getTitle(), "UTF-8");
     }
 
